@@ -1,0 +1,35 @@
+.root {
+    -fx-font-family: Arial, sans-serif;
+    -fx-background-color: #f4f4f4;
+}
+
+.container {
+    -fx-padding: 20;
+    -fx-background-color: #ffffff;
+    -fx-spacing: 10; /* corresponds to margin-bottom in .order-block */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);
+}
+
+.order-block {
+    -fx-background-color: #f8cecc;
+    -fx-padding: 20;
+    -fx-border-style: solid inside;
+    -fx-border-width: 0 0 0 5;
+    -fx-border-color: #ff6666;
+}
+
+.button {
+    -fx-background-color: #4cae4c;
+    -fx-text-fill: white;
+    -fx-padding: 10 20;
+}
+
+.button:hover {
+    -fx-background-color: #449d44;
+}
+
+.time {
+    -fx-text-alignment: right;
+    -fx-font-style: italic;
+    -fx-padding: 5 0 0 0; /* margin-top: 20px; */
+}
