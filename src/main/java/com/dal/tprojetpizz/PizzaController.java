@@ -9,8 +9,8 @@ public class PizzaController {
         this.view = view;
     }
 
-    public void addPizza(int id, String name, String ingredients) {
-        Pizza pizza = new Pizza(id, name, ingredients);
+    public void addPizza(int id, int cmdId, String name, String ingredients) {
+        Pizza pizza = new Pizza(id, cmdId, name, ingredients);
         model.addPizza(pizza);
         view.update(); // Update view
     }

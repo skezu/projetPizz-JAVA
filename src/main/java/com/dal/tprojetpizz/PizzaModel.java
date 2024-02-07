@@ -23,24 +23,25 @@ public class PizzaModel {
 
         // Utilisation de try-with-resources pour la gestion automatique des ressources
         try (Connection connection = DriverManager.getConnection(url, user, password);
-             // Préparation de la requête SQL pour mettre à jour le statut de la commande
-             PreparedStatement statement = connection.prepareStatement("UPDATE commande SET statutCommande = 'Terminé' WHERE idCommande = ?;")) {
+             // Préparation de la requête SQL pour mettre à jour le statut de la commande TODO FINIR LA REQUETE D'EN DESSOUS: CIBLER LA BONNE PIZZA PERSO
+             PreparedStatement statement = connection.prepareStatement("UPDATE pizzaPerso SET statutPizza = 'termine' WHERE idCommande = ? and idBasePizza = ?;")) {
 
-            statement.setInt(1, pizza.getId()); // Remplacez pizza.getId() par l'identifiant approprié de la commande associée à la pizza
+            statement.setInt(1, pizza.getCmdId()); // Remplacez pizza.getCmdId() par l'identifiant approprié de la commande associée à la pizza
+            statement.setInt(2, pizza.getId()); // Remplacez pizza.getId() par l'identifiant approprié de la pizza
             int affectedRows = statement.executeUpdate(); // Exécute la requête de mise à jour
 
             // Logique optionnelle pour vérifier si la mise à jour a réussi
             if (affectedRows > 0) {
-                System.out.println("Le statut de la commande pour la Pizza avec ID " + pizza.getId() + " a été mis à jour en 'Terminé'.");
+                System.out.println("Le statut de la commande pour la Pizza avec l'idCommande " + pizza.getCmdId() + " et l'idPizza " + pizza.getId() + " a été mis à jour en 'Terminé'.");
             } else {
-                System.out.println("Aucune commande trouvée pour la mise à jour avec l'ID " + pizza.getId() + ".");
+                System.out.println("Aucune pizza trouvée pour la mise à jour avec l'idCommande " + pizza.getCmdId() + " et l'idPizza " + pizza.getId() + ".");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         // Assurez-vous que la logique de suppression de la pizza de la liste, si nécessaire, est correcte
         // Assurez-vous que pizzaList est accessible et modifiable ici
-        // pizzaList.remove(pizza);
+        pizzaList.remove(pizza);
     }
 
 
